@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app/app   # mount app code for easy editing (optional)
+      - ./data:/app/app  # persist sqlite db file
+    environment:
+      - DB_PATH=todo.db
+    restart: unless-stopped
